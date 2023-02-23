@@ -1,6 +1,9 @@
-
+# Extend the OpenJDK docker image
 FROM openjdk:11-jdk-slim as jdk
+
+# Set /opt/jdk as the working directory
 WORKDIR /opt/jdk/
+
 RUN mkdir -p /opt/jdk/conf
 
 RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
@@ -13,7 +16,7 @@ RUN /opt/keycloak/bin/kc.sh build --db postgres
 
 FROM quay.io/keycloak/keycloak:19.0.2
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
-COPY --from=jdk /opt/jdk/conf /opt/keycloak/conf
+COPY --from=jdk / /opt/keycloak/conf
 WORKDIR /opt/keycloak
 
 
