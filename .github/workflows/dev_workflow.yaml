@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - name: Publish image to Azure Registry
         run: |
-          docker build --build-arg KC_DB_URL=${{ vars.KC_DB_URL }} KC_DB_USERNAME=${{ secrets.KC_DB_USERNAME }} KC_DB_PASSWORD=${{ secrets.KC_DB_PASSWORD }} KC_DB_SCHEMA=${{ vars.KC_DB_SCHEMA}} KC_PROXY=${{ vars.KC_PROXY }} KC_PROXY_ADDRESS_FORWARDING=${{ vars.KC_PROXY_ADDRESS_FORWARDING}} KC_HTTP_ENABLED=${{ vars.KC_HTTP_ENABLED }} KEYCLOAK_ADMIN=${{ secrets.KEYCLOAK_ADMIN }} KEYCLOAK_ADMIN_PASSWORD=${{ secrets.KEYCLOAK_ADMIN_PASSWORD }} KEYTOOL_PASSWORD=${{ secrets.KEYTOOL_PASSWORD}} -t ${{ secrets.REGISTRY_DOMAIN }}/${{ secrets.REGISTRY_REPO }}:${{ github.sha }} .
+          docker build --build-arg KC_DB_URL=${{ vars.KC_DB_URL }},KC_DB_USERNAME=${{ secrets.KC_DB_USERNAME }},KC_DB_PASSWORD=${{ secrets.KC_DB_PASSWORD }},KC_DB_SCHEMA=${{ vars.KC_DB_SCHEMA}},KC_PROXY=${{ vars.KC_PROXY }},KC_PROXY_ADDRESS_FORWARDING=${{ vars.KC_PROXY_ADDRESS_FORWARDING}},KC_HTTP_ENABLED=${{ vars.KC_HTTP_ENABLED }},KEYCLOAK_ADMIN=${{ secrets.KEYCLOAK_ADMIN }},KEYCLOAK_ADMIN_PASSWORD=${{ secrets.KEYCLOAK_ADMIN_PASSWORD }},KEYTOOL_PASSWORD=${{ secrets.KEYTOOL_PASSWORD}} -t ${{ secrets.REGISTRY_DOMAIN }}/${{ secrets.REGISTRY_REPO }}:${{ github.sha }} .
           docker push ${{ secrets.REGISTRY_DOMAIN }}/${{ secrets.REGISTRY_REPO }}:${{ github.sha }}
   Deploy:
     needs: Build
