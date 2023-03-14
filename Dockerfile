@@ -45,7 +45,7 @@ ENV KEYCLOAK_ADMIN=$KEYCLOAK_ADMIN
 ENV KEYCLOAK_ADMIN_PASSWORD=$KEYCLOAK_ADMIN_PASSWORD
 # ENV KC_HOSTNAME=https://tdei-sample-container.braveplant-ecc45f9c.westus.azurecontainerapps.io
 # ENV KC_HTTP_PORT=8080
-# EXPOSE 8080
+EXPOSE 8080
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh","start","--db=postgres"]
 
 #--http-port=8080 --hostname-path=https://tdei-keycloak.azurewebsites.net/   --hostname-strict-backchannel=true  
