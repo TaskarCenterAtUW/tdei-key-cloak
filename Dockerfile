@@ -33,8 +33,9 @@ WORKDIR /opt/keycloak
 
 # change these values to point to a running postgres instance
 ENV KC_DB=postgres
-ENV KC_DB_URL="jdbc:postgresql://tdei.postgres.database.azure.com:5432/tdei"
+ENV KC_DB_URL=$KC_DB_URL
 ENV KC_DB_USERNAME=$KC_DB_USERNAME
+ENV KC_DB_PASSWORD=$KC_DB_PASSWORD
 ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
 ENV KC_PROXY=$KC_PROXY
 ENV KC_PROXY_ADDRESS_FORWARDING=$KC_PROXY_ADDRESS_FORWARDING
