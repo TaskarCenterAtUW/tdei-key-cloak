@@ -484,6 +484,24 @@
       },
       "notBefore": 0,
       "groups": []
+    },
+    {
+      "username": "admin@tdei.com",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "TDEI",
+      "lastName": "Admin",
+      "email": "admin@tdei.com",
+      "credentials": [
+        {
+          "temporary": false,
+          "type": "password",
+          "value": "Admin01*"
+        }
+      ],
+      "realmRoles": [
+        "tdei-admin"
+      ]
     }
   ],
   "scopeMappings": [
