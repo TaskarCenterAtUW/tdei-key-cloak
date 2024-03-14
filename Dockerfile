@@ -30,6 +30,7 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 COPY --from=jdk / /opt/keycloak/conf
 WORKDIR /opt/keycloak
 
+COPY tdei-realm.json /opt/keycloak/data/import/tdei-realm.json
 
 # change these values to point to a running postgres instance
 ENV KC_DB=postgres
@@ -40,15 +41,7 @@ ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
 ENV KC_PROXY=$KC_PROXY
 ENV KC_PROXY_ADDRESS_FORWARDING=$KC_PROXY_ADDRESS_FORWARDING
 ENV KC_HOSTNAME_STRICT=$KC_HOSTNAME_STRICT
-# ENV KC_HOSTNAME=localhost
 ENV KC_HTTP_ENABLED=$KC_HTTP_ENABLED
 ENV KEYCLOAK_ADMIN=$KEYCLOAK_ADMIN
 ENV KEYCLOAK_ADMIN_PASSWORD=$KEYCLOAK_ADMIN_PASSWORD
-# ENV KC_HOSTNAME=https://tdei-sample-container.braveplant-ecc45f9c.westus.azurecontainerapps.io
-# ENV KC_HTTP_PORT=8080
-#EXPOSE 8080
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh","start","--db=postgres"]
-
-#--http-port=8080 --hostname-path=https://tdei-keycloak.azurewebsites.net/   --hostname-strict-backchannel=true  
-#--http-port=8080 --hostname-url=https://tdei-keycloak.azurewebsites.net --hostname-admin-url=https://tdei-keycloak.azurewebsites.net/admin --hostname-strict-backchannel=true 
-#--http-port=8080 --hostname=tdei-keycloak.azurewebsites.net --hostname-strict-backchannel=true
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh","start","--import-realm","--optimized"]
