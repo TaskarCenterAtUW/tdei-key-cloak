@@ -11,6 +11,7 @@ RUN keytool -genkeypair -storepass $KEYTOOL_PASSWORD -storetype PKCS12 -keyalg R
 FROM quay.io/keycloak/keycloak:19.0.2 as builder
 
 ENV KC_DB=postgres
+ENV KC_HEALTH_ENABLED=true
 
 RUN /opt/keycloak/bin/kc.sh build --db postgres
 
