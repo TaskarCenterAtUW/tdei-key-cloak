@@ -8,6 +8,14 @@ RUN mkdir -p /opt/jdk/conf
 
 RUN keytool -genkeypair -storepass $KEYTOOL_PASSWORD -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
 
+COPY Microsoft_RSA_Root_Certificate_Authority_2017.crt /opt/keycloak/data/import/Microsoft_RSA_Root_Certificate_Authority_2017.crt
+
+# Import the Microsoft RSA Root Certificate into the Keycloak keystore
+RUN keytool -import -trustcacerts -alias microsoft_rsa_root \
+    -file /opt/keycloak/data/import/Microsoft_RSA_Root_Certificate_Authority_2017.crt \
+    -storepass $KEYTOOL_PASSWORD \
+    -keystore conf/server.keystore -noprompt
+
 FROM quay.io/keycloak/keycloak:19.0.2 as builder
 
 ENV KC_DB=postgres
