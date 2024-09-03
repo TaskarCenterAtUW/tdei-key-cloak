@@ -1,0 +1,20 @@
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Name of the tag'
+        required: true
+jobs:
+ Build:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.REGISTRY_DOMAIN }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Publish image to Azure Registry
+      run: |
+        docker build  -t ${{ secrets.REGISTRY_DOMAIN }}/${{ secrets.REGISTRY_REPO }}:${{ github.event.inputs.tag }} .
+        docker push ${{ secrets.REGISTRY_DOMAIN }}/${{ secrets.REGISTRY_REPO }} --all-tags
