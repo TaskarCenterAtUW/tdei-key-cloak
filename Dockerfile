@@ -6,7 +6,7 @@ WORKDIR /opt/keycloak
 # Copy the realm file into the appropriate directory
 COPY tdei-realm.json /opt/keycloak/data/import/tdei-realm.json
 
-RUN /opt/keycloak/bin/kc.sh build --db postgres
+RUN /opt/keycloak/bin/kc.sh build --db postgres --health-enabled=true
 
 # Start the Keycloak service
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start","--import-realm","--optimized"]
