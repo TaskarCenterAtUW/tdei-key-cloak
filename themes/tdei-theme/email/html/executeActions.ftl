@@ -16,7 +16,7 @@
             <td style="padding: 20px; font-size: 15px; line-height: 1.5; color: #444;">
                 <p>${kcSanitize(msg("greetingMsg"))?no_esc} ${user.firstName},</p>
                 <p>${kcSanitize(msg("verifyEmail_welcomeMsg"))?no_esc}</p>
-                <p style="text-align: center; margin: 30px 0px;">
+                <p style="text-align: left; margin: 30px 0px;">
                     <a href="${link}" style="background-color: #873ef2; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; font-size: 16px;">${kcSanitize(msg("verifyEmail_button"))?no_esc}</a>
                 </p>
                 <p>${kcSanitize(msg("verifyEmail_linkExpireMsg"))?no_esc} <span style="font-weight: 700;">${linkExpirationFormatter(linkExpiration)}</span>.</p>
@@ -31,7 +31,7 @@
                 <p style="font-size: 22px; font-weight: 700; color: #873ef2; padding-bottom: 10px;">${kcSanitize(msg("passwordReset_titleMsg"))?no_esc}</p>
                 <p>${kcSanitize(msg("greetingMsg"))?no_esc} ${user.firstName},</p>
                 <p>${kcSanitize(msg("passwordReset_welcomeMsg"))?no_esc}</p>
-                <p style="text-align: center; margin: 30px 0px;">
+                <p style="text-align: left; margin: 30px 0px;">
                     <a href="${link}" style="background-color: #873ef2; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; font-size: 16px;">${kcSanitize(msg("passwordReset_button"))?no_esc}</a>
                 </p>
                 <p>${kcSanitize(msg("passwordReset_linkExpireMsg_01"))?no_esc} <span style="font-weight: 700;">${linkExpirationFormatter(linkExpiration)}</span>. ${kcSanitize(msg("passwordReset_linkExpireMsg_02"))?no_esc}</p>
@@ -47,7 +47,7 @@
             <hr style="border-top: 1px dashed #d5d5d5;border-bottom: none;margin-bottom: 20px;">
             <p style="color: #999;">${kcSanitize(msg("copyURLMsg"))?no_esc}</p>
             <p>
-                <a href="${link}" style="color: #007bff; text-decoration: none; overflow-wrap: anywhere;">${link}</a>
+                <a href="${link}" style="color: #007bff; text-decoration: none; word-break: break-all; overflow-wrap: anywhere;">${link}</a>
             </p>
         </td>
     </tr>
