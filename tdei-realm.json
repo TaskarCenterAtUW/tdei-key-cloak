@@ -2486,7 +2486,7 @@
     "clientSessionMaxLifespan": "0",
     "frontendUrl": "",
     "organizationsEnabled": "false",
-    "acr.loa.map": "{}"
+    "acr.loa.map": "[]"
   },
   "keycloakVersion": "25.0.4",
   "userManagedAccessAllowed": false,
