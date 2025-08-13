@@ -1,6 +1,6 @@
 
 # Keycloak 
-Keycloak serves as the central authentication and token management server for the TDEI project. It provides secure and efficient identity management, handling all aspects of user registration, authentication, and token management.
+Keycloak serves as the central authentication and token management server for the TDEI project. It provides secure and efficient identity management, handling all aspects of user registration, authentication, and token management
 
 ## Create an Environment File (.env)
 
