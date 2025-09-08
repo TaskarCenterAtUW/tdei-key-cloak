@@ -55,6 +55,10 @@ Once the container is running, access the Keycloak Admin Console at:
     - Username: admin
     - Password: admin (Update credentials for security!)
 
+## For new clients or installation ensure 
+- user admin@tdei.com creds is reset for security and it is created with default password in config.
+- credential secrets are regenerted for each TDEI clients
+- Realm email SMTP password is set. 
 
 ## Custom Themes
 The TDEI custom theme is copied to Keycloak’s themes directory
